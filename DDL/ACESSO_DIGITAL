@@ -1,0 +1,16 @@
+CREATE TABLE ACESSO_DIGITAL (
+    ID_Item_Digital INT NOT NULL,
+    CPF_Usuario VARCHAR(11) NOT NULL,
+    Data_Acesso TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    -- Chave Primária Composta
+    PRIMARY KEY (ID_Item_Digital, CPF_Usuario, Data_Acesso),
+    
+    -- Chave Estrangeira para ITEM_DIGITAL
+    CONSTRAINT FK_Acesso_Digital_Item FOREIGN KEY (ID_Item_Digital)
+        REFERENCES ITEM_DIGITAL (ID_Item),
+        
+    -- Chave Estrangeira para USUARIO
+    CONSTRAINT FK_Acesso_Digital_Usuario FOREIGN KEY (CPF_Usuario)
+        REFERENCES USUARIO (CPF)
+);
