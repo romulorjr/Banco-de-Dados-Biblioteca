@@ -1,0 +1,14 @@
+CREATE TABLE EVENTOS (
+    ID_Evento INT PRIMARY KEY,
+    Nome_Evento VARCHAR(150) NOT NULL,
+    Tipo VARCHAR(50),
+    Data_Inicio DATE NOT NULL,
+    Data_Fim DATE,
+    Num_Inscritos INT DEFAULT 0,
+    Outras_Relacionadas TEXT,
+    ID_Infra INT,
+    
+    -- Chave Estrangeira para OCORRE_EM
+    CONSTRAINT FK_Evento_Infra FOREIGN KEY (ID_Infra)
+        REFERENCES INFRAESTRUTURA (ID_Infra)
+);
